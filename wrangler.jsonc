@@ -1,9 +1,17 @@
 {
-  // Cloudflare Workers static-assets deployment of the built Astro site.
+  // davidbennettphd.com: the built Astro site (./dist) plus a small Worker for the contact form.
   "name": "david-bennett-site",
+  "main": "worker/index.js",
   "compatibility_date": "2026-11-01",
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "404-page"
-  }
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*"]
+  },
+  // Messages go to this inbox; it must be a verified destination in Cloudflare Email Routing.
+  "vars": { "CONTACT_TO": "dgbenn@gmail.com" },
+  "send_email": [{ "name": "SEND_EMAIL", "destination_address": "dgbenn@gmail.com" }],
+  "observability": { "enabled": true }
+  // Secret (set in the dashboard, never in this file): TURNSTILE_SECRET
 }

@@ -23,3 +23,20 @@
 .ico2 svg{width:18px;height:18px;fill:currentColor}
 .contact .cta .pill{min-width:210px}
 .foot{text-align:left;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:190px;padding-top:26px;border-top:0}
+/* contact form */
+.cform{max-width:720px;margin:48px auto 0;text-align:left;display:grid;gap:18px}
+.cform .row2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.cform label{display:grid;gap:8px;font-size:.92rem;color:var(--muted)}
+.cform input,.cform select,.cform textarea{font:inherit;font-size:1rem;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:12px 14px;width:100%}
+.cform textarea{resize:vertical;min-height:140px}
+.cform input:focus,.cform select:focus,.cform textarea:focus{outline:2px solid var(--signal);outline-offset:1px;border-color:var(--signal)}
+.cform .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.cform .send{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.cform button.pill{cursor:pointer;font:inherit}
+.cform button[disabled]{opacity:.6;cursor:progress}
+.cstatus{color:var(--muted);font-size:.95rem}
+.cstatus.ok{color:var(--teal)}
+.cstatus.err{color:#ff8a80}
+.orline{margin-top:56px}
+.contact .orline + .mailrow{margin-top:16px}
+@media (max-width:640px){.cform .row2{grid-template-columns:1fr}}

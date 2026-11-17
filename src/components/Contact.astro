@@ -1,9 +1,35 @@
+---
+// Cloudflare Turnstile site key (public). Replace the test key with the real one.
+const SITEKEY = '1x00000000000000000000AA';
+---
 <section class="contact" id="contact">
   <div class="wrap">
     <h2 class="reveal">Hire me, book me, or just ask.</h2>
     <p class="lede">Tell me what you need: an imaging endpoint, a physics course, or a talk.</p>
+    <form class="cform" id="cform" novalidate data-sitekey={SITEKEY}>
+      <div class="row2">
+        <label>Name<input name="name" autocomplete="name" required maxlength="120"></label>
+        <label>Email<input name="email" type="email" autocomplete="email" required maxlength="200"></label>
+      </div>
+      <label>What is this about?
+        <select name="topic" id="ctopic">
+          <option value="role">A role or consulting project</option>
+          <option value="teaching">A course or teaching</option>
+          <option value="talk">A talk or workshop</option>
+          <option value="other">Something else</option>
+        </select>
+      </label>
+      <label>Message<textarea name="message" rows="6" required maxlength="5000"></textarea></label>
+      <label class="hp" aria-hidden="true">Leave this empty<input name="website" tabindex="-1" autocomplete="off"></label>
+      <div class="ts" id="cts"></div>
+      <div class="send">
+        <button class="pill" type="submit" id="csend">Send message</button>
+        <p class="cstatus" id="cstatus" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+    <p class="orline mono">Or email me directly</p>
     <div class="mailrow">
-      <a class="bigmail" href="mailto:dgbenn@gmail.com">dgbenn@gmail.com</a>
+      <a class="bigmail" href="mailto:dave@davidbennettphd.com">dave@davidbennettphd.com</a>
       <button class="copyico" type="button" id="copymail" aria-label="Copy email address"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="c1" d="M9 9h10a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V10a1 1 0 0 1 1-1zm1 2v8h8v-8h-8zM5 3h10a1 1 0 0 1 1 1v2h-2V5H6v8h1v2H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path class="c2" d="M9.5 16.2 5.8 12.5l-1.4 1.4 5.1 5.1L20 8.5l-1.4-1.4z"/></svg><span id="copymsg" aria-live="polite">Copy email address</span></button>
     </div>
     <div class="cta">

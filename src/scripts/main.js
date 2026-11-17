@@ -2,6 +2,7 @@ import './reveal.js';
 import './buttons.js';
 import './menu.js';
 import './copy-email.js';
+import './contact-form.js';
 import './drag-hint.js';
 import './timeline.js';
 import './sketches.js';
