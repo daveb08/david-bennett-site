@@ -25,13 +25,15 @@ git remote add origin https://github.com/daveb08/<repo-name>.git
 git push -u origin main
 ```
 
-## Deploy on Cloudflare Pages
+## Deploy on Cloudflare (Workers static assets)
 
-1. In the Cloudflare dashboard choose **Workers & Pages > Create > Pages > Connect to Git** and pick the GitHub repository.
-2. Framework preset: **Astro**. Build command `npm run build`, output directory `dist`.
-   Under environment variables set `NODE_VERSION` to `20`.
-3. Deploy. Every push to `main` redeploys; other branches get preview links.
-4. Under **Custom domains** add `davidbennettphd.com` (and `www.davidbennettphd.com`).
+1. In the Cloudflare dashboard go to **Workers & Pages > Create application**, choose **Import a repository**
+   and pick this GitHub repository.
+2. Build command `npm run build`; deploy command `npx wrangler deploy` (the defaults).
+   `wrangler.jsonc` tells Cloudflare to serve the built `dist/` folder.
+3. Deploy. Every push to `main` rebuilds and redeploys.
+4. Under the Worker's **Settings > Domains & Routes** add `davidbennettphd.com` and `www.davidbennettphd.com`
+   as custom domains.
 
 `public/_headers` sets long-lived caching for built assets and a few security headers.
 
