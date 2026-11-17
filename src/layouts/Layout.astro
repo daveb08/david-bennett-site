@@ -3,12 +3,14 @@ import '@fontsource-variable/manrope';
 import '../styles/global.css';
 
 const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const person = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'David Bennett',
   honorificSuffix: 'Ph.D.',
   jobTitle: 'MRI physicist and imaging scientist',
+  url: 'https://davidbennettphd.com',
   sameAs: ['https://www.linkedin.com/in/david-bennett-phd-imaging-scientist', 'https://github.com/daveb08'],
 };
 ---
@@ -20,7 +22,9 @@ const person = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="theme-color" content="#000000" />
+    <link rel="canonical" href={canonical} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

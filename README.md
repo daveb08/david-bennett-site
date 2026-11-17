@@ -25,14 +25,15 @@ git remote add origin https://github.com/daveb08/<repo-name>.git
 git push -u origin main
 ```
 
-## Deploy on Vercel
+## Deploy on Cloudflare Pages
 
-1. At vercel.com choose **Add New > Project** and import the GitHub repository.
-2. Vercel detects Astro. Leave the defaults (build command `npm run build`, output `dist`).
-3. Deploy. Every push to `main` redeploys; pull requests get preview links.
-4. Add a custom domain under **Settings > Domains**.
+1. In the Cloudflare dashboard choose **Workers & Pages > Create > Pages > Connect to Git** and pick the GitHub repository.
+2. Framework preset: **Astro**. Build command `npm run build`, output directory `dist`.
+   Under environment variables set `NODE_VERSION` to `20`.
+3. Deploy. Every push to `main` redeploys; other branches get preview links.
+4. Under **Custom domains** add `davidbennettphd.com` (and `www.davidbennettphd.com`).
 
-`vercel.json` sets long-lived caching for built assets and a few security headers.
+`public/_headers` sets long-lived caching for built assets and a few security headers.
 
 ## Where things live
 
@@ -53,6 +54,7 @@ src/
     reveal.js menu.js ...  small behaviours, one per file
   assets/david-bennett.jpg portrait (resized and converted to WebP at build time)
 public/
+  _headers                 caching and security headers for Cloudflare Pages
   David-Bennett-CV.pdf     the file behind "Download CV"
   favicon.svg  robots.txt
 ```
@@ -95,5 +97,4 @@ What keeps it fast:
 - Early engineering dates in the timeline (1997 to 2002) are estimated.
 - `David-Bennett-CV.pdf` was rebuilt from the CV text without the phone number. Replace it with your own.
 - The "open to" sentence in the hero and the talk topics are suggestions to confirm.
-- Once the domain is known, set `site: 'https://your-domain'` in `astro.config.mjs` and add
-  `og:url`, `og:image` and a canonical link in `src/layouts/Layout.astro`.
+- The domain is set to `https://davidbennettphd.com` in `astro.config.mjs`; canonical and `og:url` follow it.
