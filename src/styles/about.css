@@ -1,0 +1,21 @@
+/* statement */
+.about{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:72px;align-items:center}
+.portrait{position:relative}
+.portrait::before{content:"";position:absolute;inset:-14%;background:radial-gradient(closest-side,color-mix(in srgb,var(--signal) 26%,transparent),transparent);filter:blur(30px);pointer-events:none}
+.halo{position:absolute;width:138%;left:-19%;top:50%;margin-top:-69%;aspect-ratio:1;color:var(--signal);opacity:.3;pointer-events:none;animation:turn 120s linear infinite;-webkit-mask-image:radial-gradient(closest-side,#000 45%,transparent 100%);mask-image:radial-gradient(closest-side,#000 45%,transparent 100%)}
+@keyframes turn{to{transform:rotate(360deg)}}
+.statement{overflow:hidden}
+.about figure{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:4/5;background:var(--surface)}
+.about img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block;transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
+.about figure:hover img{transform:scale(1.04)}
+.about figcaption{position:absolute;left:0;right:0;bottom:0;padding:44px 18px 16px;background:linear-gradient(transparent,rgba(0,0,0,.72));font-size:.85rem;color:#F5F6F7}
+
+.statement p{font-weight:500;font-size:clamp(1.5rem,3vw,2.5rem);line-height:1.25;letter-spacing:-0.03em;max-width:24ch;color:var(--muted);max-width:none}
+.statement p b{font-weight:500;color:var(--ink)}
+.cols3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px;margin-top:88px}
+.cols3 > div{border-top:1px solid var(--line);padding-top:22px}
+.cols3 .mono{display:flex;align-items:center;gap:8px;margin-bottom:18px}
+.cols3 .mono::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c)}
+.cols3 p{color:var(--muted);margin-top:12px;font-size:1rem}
+.go{display:inline-block;margin-top:22px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--c,var(--signal));padding-bottom:4px;transition:color .2s,padding .3s}
+.go:hover{color:var(--c,var(--signal));padding-right:10px}

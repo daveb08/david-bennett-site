@@ -1,0 +1,42 @@
+:root{
+  color-scheme:dark;
+  --bg:#000000;
+  --surface:#0B0C0F;
+  --ink:#F5F6F7;
+  --muted:#9499A3;
+  --line:#23252B;
+  --signal:#4D8DFF;   /* electric blue: the magnetization vector, the one accent */
+  --cool:#C4CCDA;     /* silver: the sphere and B0 */
+  --teal:#3CC9B8;
+  --violet:#B094FF;
+  --slate:#93A1BE;
+  --display:"Manrope Variable","Manrope","Helvetica Neue",Arial,system-ui,sans-serif;
+  --mono:"Manrope Variable","Manrope","Helvetica Neue",Arial,system-ui,sans-serif;
+  --wrap:1280px;
+}
+.light{
+  --bg:#F4F4F4;--surface:#FFFFFF;--ink:#0A0A0B;--muted:#5C616B;--line:#DADCE0;
+  --cool:#5B6474;--signal:#1F5FE0;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--display);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-underline-offset:4px}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--signal);outline-offset:4px;border-radius:4px}
+h1,h2,h3,p,figure{margin:0}
+h1,h2,h3{font-weight:500;text-wrap:balance}
+h2{font-size:clamp(2rem,4.4vw,3.5rem);line-height:1.05;letter-spacing:-0.03em}
+h3{font-size:clamp(1.3rem,2vw,1.6rem);line-height:1.18;letter-spacing:-0.02em}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 32px}
+.mono{font-family:var(--mono);font-size:.82rem;font-weight:500;letter-spacing:.03em;color:var(--muted);font-variant-numeric:tabular-nums}
+.lede{color:var(--muted);max-width:56ch;font-size:1.1rem}
+section{background:var(--bg);color:var(--ink);padding:120px 0}
+.sec-head{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:32px 64px;align-items:end;margin-bottom:80px}
+
+/* accent helpers used by components */
+.c-signal{--c:var(--signal)}
+.c-teal{--c:var(--teal)}
+.c-violet{--c:var(--violet)}
+.ev.s{--c:var(--signal)}
+.ev.t{--c:var(--teal)}

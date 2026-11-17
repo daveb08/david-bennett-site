@@ -1,0 +1,10 @@
+/* work rows */
+.rows{list-style:none;padding:0;border-bottom:1px solid var(--line)}
+.rows{margin:0 -24px}
+.rows li{display:grid;grid-template-columns:minmax(0,13rem) minmax(0,1.25fr) minmax(0,1fr);gap:12px 48px;padding:34px 24px;border-top:1px solid var(--line);align-items:baseline;position:relative;transition:background .35s}
+.rows li::after{content:"";position:absolute;left:0;top:-1px;height:1px;width:100%;background:var(--signal);transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.rows li:hover{background:color-mix(in srgb,var(--ink) 5%,transparent)}
+.rows li:hover::after{transform:scaleX(1)}
+.rows li h3{transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.rows li:hover h3{transform:translateX(8px)}
+.rows p{color:var(--muted);font-size:1rem}

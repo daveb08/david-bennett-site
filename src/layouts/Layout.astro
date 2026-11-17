@@ -1,0 +1,36 @@
+---
+import '@fontsource-variable/manrope';
+import '../styles/global.css';
+
+const { title, description } = Astro.props;
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'David Bennett',
+  honorificSuffix: 'Ph.D.',
+  jobTitle: 'MRI physicist and imaging scientist',
+  sameAs: ['https://www.linkedin.com/in/david-bennett-phd-imaging-scientist', 'https://github.com/daveb08'],
+};
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#000000" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script type="application/ld+json" set:html={JSON.stringify(person)} />
+  </head>
+  <body>
+    <a href="#top" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-ink focus:px-4 focus:py-2 focus:text-bg">Skip to content</a>
+    <slot />
+    <script>
+      import '../scripts/main.js';
+    </script>
+  </body>
+</html>

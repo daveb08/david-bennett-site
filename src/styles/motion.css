@@ -1,0 +1,30 @@
+/* motion: scroll-linked reveals where the browser supports them; everything is visible without them */
+@keyframes reveal{from{opacity:0;transform:translateY(48px) scale(.98);filter:blur(6px)}}
+@keyframes wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 -400px 0 0)}}
+.anim .reveal{transition:opacity 1s cubic-bezier(.2,.8,.2,1),transform 1.1s cubic-bezier(.2,.8,.2,1),filter 1s,background .35s,box-shadow .5s}
+.anim .reveal:not(.in){opacity:0;transform:translateY(46px) scale(.985);filter:blur(8px)}
+.top{animation:drop .9s .3s cubic-bezier(.2,.8,.2,1) backwards}
+@keyframes drop{from{transform:translateY(-100%)}}
+.w{transition:color .5s}
+.dim{color:var(--ink)}
+.dim .w{color:#7d828c}
+.dim .w.on{color:inherit}
+.pill{position:relative;text-shadow:none;transition:background .25s,color .25s,border-color .25s,transform .15s}
+.pill:hover,.pill:focus-visible{background:var(--signal);border-color:var(--signal);color:#fff}
+.pill.line:hover,.pill.line:focus-visible{background:color-mix(in srgb,var(--ink) 24%,transparent);border-color:color-mix(in srgb,var(--ink) 45%,transparent);color:var(--ink)}
+.pill:active{transform:scale(.97)}
+.lbl{display:inline-block;position:relative;overflow:hidden;vertical-align:bottom;line-height:1.5}
+.lbl > span{display:block;transition:transform .45s cubic-bezier(.3,.9,.3,1)}
+.lbl::after{content:attr(data-t);position:absolute;left:0;top:100%;white-space:nowrap;transition:transform .45s cubic-bezier(.3,.9,.3,1)}
+.pill:hover .lbl > span,.pill:focus-visible .lbl > span,.pill:hover .lbl::after,.pill:focus-visible .lbl::after{transform:translateY(-100%)}
+.pill.ico svg{transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.pill.ico:hover svg{transform:translateY(2px) scale(1.08)}
+.pill.ico{display:inline-flex;align-items:center;justify-content:center;gap:12px}
+.pill.ico svg{width:19px;height:19px;fill:currentColor;flex:none}
+
+.sim{transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s}
+.sim:hover{transform:translateY(-8px);box-shadow:0 40px 70px -40px rgba(0,0,0,.45)}
+.top nav a:not(.pill){position:relative}
+.top nav a:not(.pill)::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.top nav a:not(.pill):hover::after{transform:scaleX(1)}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}

@@ -1,0 +1,22 @@
+<div class="hero" id="hero">
+  <div class="stage" id="stage"><canvas id="bloch" aria-label="3D view of a magnetization vector on a Bloch sphere. Drag to rotate."></canvas></div>
+  <div class="wrap hero-copy" id="hero-copy">
+    <h1>MRI that shows if a drug works. Physics that finally clicks.</h1>
+    <p class="lede">Imaging scientist and physics teacher, open to roles, consulting, teaching and talks.</p>
+  </div>
+  <div class="hero-gap"></div>
+  <div class="wrap hero-bar" id="hero-bar">
+    <div class="views">
+      <div class="tabs" id="tabs" aria-label="Choose what the particles show">
+        <button class="tab on" type="button" data-k="0">Relaxation</button>
+        <button class="tab" type="button" data-k="1">RF coil</button>
+        <button class="tab" type="button" data-k="2">K-space</button>
+        <button class="tab" type="button" data-k="3">Signal</button>
+      </div>
+      <p class="cap" id="cap" aria-live="polite">Magnetization relaxing after a 90 degree pulse. Drag to rotate.</p>
+      <div class="hud">
+        <span hidden><b id="mz"></b><b id="mxy"></b><canvas id="trace"></canvas></span>
+      </div>
+    </div>
+  </div>
+</div>

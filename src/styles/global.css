@@ -1,0 +1,28 @@
+/* Tailwind v4. Design tokens live in base.css as CSS variables and are exposed to Tailwind below,
+   so utilities such as bg-surface, text-muted and font-display work anywhere. */
+@import "tailwindcss";
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-signal: var(--signal);
+  --color-teal: var(--teal);
+  --color-violet: var(--violet);
+  --font-display: var(--display);
+}
+
+@import "./base.css" layer(base);
+@import "./nav.css" layer(components);
+@import "./hero.css" layer(components);
+@import "./specs.css" layer(components);
+@import "./about.css" layer(components);
+@import "./work.css" layer(components);
+@import "./simulators.css" layer(components);
+@import "./timeline.css" layer(components);
+@import "./publications.css" layer(components);
+@import "./contact.css" layer(components);
+@import "./motion.css" layer(components);
+@import "./responsive.css" layer(components);

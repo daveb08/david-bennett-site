@@ -1,0 +1,8 @@
+/* spec strip */
+.specs{padding:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.specs .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.specs .wrap > div{padding:44px 24px;text-align:center;border-left:1px solid var(--line)}
+.specs .wrap > div:first-child{border-left:0}
+.specs b{display:block;font-weight:300;font-size:clamp(2.2rem,4vw,3.4rem);letter-spacing:-0.04em;line-height:1}
+.specs b small{font-size:.45em;letter-spacing:0;margin-left:.15em;color:var(--muted)}
+.specs .wrap > div > span{display:block;margin-top:14px;color:var(--muted);font-size:.92rem}
