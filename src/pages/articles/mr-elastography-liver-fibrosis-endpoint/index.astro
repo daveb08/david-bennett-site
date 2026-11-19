@@ -1,0 +1,90 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Contact from '../../../components/Contact.astro';
+import articles from '../../../data/articles.js';
+
+const a = articles.find((x) => x.slug === 'mr-elastography-liver-fibrosis-endpoint');
+const url = `https://davidbennettphd.com/articles/${a.slug}/`;
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: a.title,
+  description: a.description,
+  datePublished: a.date,
+  dateModified: a.date,
+  mainEntityOfPage: url,
+  image: 'https://davidbennettphd.com/og-image.png',
+  author: { '@type': 'Person', name: 'David Bennett', honorificSuffix: 'PhD', url: 'https://davidbennettphd.com' },
+  about: ['MR elastography', 'Liver fibrosis', 'Clinical trial endpoints'],
+};
+---
+<Layout title={`${a.title} | David Bennett, Ph.D.`} description={a.description} extraJsonLd={ld}>
+  <Header current="articles" />
+  <main id="top">
+    <section class="pagehead">
+      <div class="wrap">
+        <p class="mono"><a href="/articles/">Articles</a></p>
+        <h1 style="max-width:24ch">{a.title}</h1>
+        <p class="byline">David Bennett, Ph.D. · November 19, 2026</p>
+      </div>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="wrap">
+        <article class="prose">
+          <p>If you are planning a trial with liver fibrosis as an endpoint, MR elastography (MRE) is probably already on your list. It measures liver stiffness, which rises as fibrosis builds, and it does so without a needle or a contrast agent.</p>
+          <p>When I talk with sponsors about MRE, the same four questions come up. Here is how I answer them, based on my experience running imaging in multi-center clinical trials.</p>
+
+          <h2>“Isn't MRE exploratory, and not widely available?”</h2>
+          <p>Not anymore. MRE has been studied for well over a decade, and the major scanner vendors offer it. The driver hardware most sites use comes from Resoundant, which grew out of the MRE work at Mayo Clinic, and it is available for GE, Siemens and Philips scanners.</p>
+          <p>There is also a published standard. The <a href="https://qibawiki.rsna.org/index.php/MR_Elastography_of_the_Liver,_Clinically_Feasible_Profile" target="_blank" rel="noopener">QIBA profile for liver MRE</a> sets out how to acquire and analyze the scans so that results are repeatable from site to site. That work now continues under the Quantitative Medical Imaging Coalition.</p>
+          <p>Where MRE sits with regulators deserves a careful answer. Regulators are moving toward non-invasive measures of liver stiffness: in 2025 the FDA <a href="https://www.fda.gov/drugs/drug-alerts-and-statements/fda-accepts-proposal-reasonably-likely-surrogate-endpoint-mash-all-cause-mortality-or-liver-related" target="_blank" rel="noopener">accepted a Letter of Intent</a> to qualify liver stiffness measured by vibration-controlled transient elastography (FibroScan) as a reasonably likely surrogate endpoint in MASH. That effort covers ultrasound elastography, not MRE. So the role MRE will play in your trial, whether primary, key secondary or supportive, is something to agree with the FDA early, in your briefing documents.</p>
+
+          <h2>“Can we really rely on MRE instead of biopsy?”</h2>
+          <p>For staging fibrosis, MRE has a strong record against biopsy. In a <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4333001" target="_blank" rel="noopener">pooled analysis of 697 patients from 12 studies</a>, MRE identified significant fibrosis, advanced fibrosis and cirrhosis with areas under the ROC curve of 0.88 to 0.93. The scan failed in only 4.3% of exams.</p>
+          <p>Biopsy is still the reference standard, but it samples a small piece of a large organ, it carries real risk, and repeating it during a trial is a burden for patients. MRE measures stiffness across a large part of the liver, and it can be repeated at every visit the protocol needs. That makes it well suited to tracking change over the course of a trial.</p>
+          <p>For change, the QIBA profile gives a clear number: a measured change in liver stiffness of 19% or more indicates a true change with 95% confidence. I advise sponsors to build their response definitions and sample size around that evidence, rather than around an arbitrary cut-off.</p>
+
+          <h2>“Will sites know how to do this?”</h2>
+          <p>Many will, and the ones that don't can be trained. MRE needs one extra piece of hardware, the driver that sends gentle vibrations into the liver, plus the MRE sequence on the scanner. It needs no injection and no invasive procedure.</p>
+          <p>My first recommendation is to work with a CRO or imaging vendor that has already run MRE as a trial endpoint. Resoundant itself is one option. Experience counts most in site qualification and training, which is where most problems are prevented.</p>
+          <p>Site training should cover three things:</p>
+          <ul>
+            <li><strong>Consistent breath-holds.</strong> Patient motion is the most common cause of a failed MRE, so technologists should coach patients through each breath-hold the same way at every visit.</li>
+            <li><strong>Checking the wave images at the scanner.</strong> The technologist should review the phase (wave) images before the patient leaves the table. A poor acquisition can then be repeated on the spot, instead of being discovered weeks later.</li>
+            <li><strong>The right sequence for the scanner.</strong> High liver iron weakens the MRE signal, especially at 3T. Where it is available, a spin-echo-based MRE sequence copes better. Iron overload is relatively uncommon, so this affects a small share of patients, but the protocol should still plan for it.</li>
+          </ul>
+
+          <h2>“How much complexity will MRE add to the study?”</h2>
+          <p>Less than most sponsors expect. MRE adds little time to a standard liver MRI exam, and the patient experience is essentially the same.</p>
+          <p>The real work is quality control, and it should happen in two places:</p>
+          <ol>
+            <li><strong>At the site, before the patient leaves the scanner</strong>, as described above.</li>
+            <li><strong>At the CRO, before the images reach a reader</strong>, checking image quality and protocol compliance for every scan.</li>
+          </ol>
+          <p>Central reading needs clear rules too. Readers most often disagree on exactly where to place the regions of interest, so the reading charter should define ROI placement precisely.</p>
+          <p>Because the patient is already in the scanner, the same visit can also include a proton density fat fraction (PDFF) scan to measure liver fat. Whether that adds value depends on the indication being studied, so I would decide it case by case.</p>
+
+          <h2>The bottom line</h2>
+          <p>MRE can be a reliable liver fibrosis endpoint in a multi-center trial. What makes it work is not exotic: proper site training, standardized acquisition and processing protocols, robust image QC, and a well-defined central reading process.</p>
+
+          <div class="cta-box">
+            <p>If you are planning a liver study and would like a second opinion on an MRE plan or protocol, I would be glad to take a look.</p>
+            <a class="pill" href="#contact" data-topic="role">Get in touch</a>
+          </div>
+
+          <h2>References</h2>
+          <ol class="refs">
+            <li>QIBA MR Biomarker Committee. <a href="https://qibawiki.rsna.org/index.php/MR_Elastography_of_the_Liver,_Clinically_Feasible_Profile" target="_blank" rel="noopener">MR Elastography of the Liver, Clinically Feasible Profile</a>. RSNA, November 2023.</li>
+            <li>Singh S, et al. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4333001" target="_blank" rel="noopener">Diagnostic performance of magnetic resonance elastography in staging liver fibrosis: a systematic review and meta-analysis of individual participant data</a>. Clinical Gastroenterology and Hepatology, 2015.</li>
+            <li>U.S. Food and Drug Administration. <a href="https://www.fda.gov/drugs/drug-alerts-and-statements/fda-accepts-proposal-reasonably-likely-surrogate-endpoint-mash-all-cause-mortality-or-liver-related" target="_blank" rel="noopener">FDA accepts proposal for reasonably likely surrogate endpoint for MASH all-cause mortality or liver-related events</a>. 2025.</li>
+            <li>Serai SD, Pepin K, Chen J, Venkatesh SK, Obuchowski NA, Cole PE, Ehman RL; QMIC MRE Biomarker Committee. <a href="https://doi.org/10.1148/radiol.260974" target="_blank" rel="noopener">Standardizing Liver MR Elastography: Guidelines for Reliable Stiffness Measurement in Chronic Liver Disease</a>. Radiology, 2026;321(1).</li>
+          </ol>
+        </article>
+      </div>
+    </section>
+
+    <Contact title="Planning a liver study?" lede="Tell me about the indication, the endpoint and where you are in planning." />
+  </main>
+</Layout>

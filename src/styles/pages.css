@@ -31,3 +31,27 @@
   .list li{grid-template-columns:minmax(0,1fr)}
   .pagehead{padding:140px 0 72px}
 }
+
+/* Articles */
+.byline{margin-top:24px;color:var(--muted);font-size:.95rem}
+.prose{max-width:68ch}
+.prose h2{font-size:clamp(1.4rem,2.4vw,1.9rem);margin:64px 0 18px;letter-spacing:-0.02em}
+.prose p,.prose li{color:var(--muted);font-size:1.08rem;line-height:1.7}
+.prose p + p{margin-top:18px}
+.prose ul,.prose ol{margin:18px 0 0;padding-left:1.4em}
+.prose ul{list-style:disc}
+.prose ol{list-style:decimal}
+.prose li::marker{color:var(--muted)}
+.prose li + li{margin-top:12px}
+.prose strong{color:var(--ink);font-weight:600}
+.prose a{color:var(--signal);text-decoration:underline;text-underline-offset:3px}
+.prose .refs li{font-size:.95rem;line-height:1.55}
+.cta-box{margin-top:64px;padding:32px;border:1px solid var(--line);border-radius:16px}
+.cta-box p{color:var(--ink)}
+.cta-box .pill{margin-top:18px;display:inline-block}
+.alist{list-style:none;padding:0;margin:0;border-bottom:1px solid var(--line)}
+.alist li{padding:32px 0;border-top:1px solid var(--line)}
+.alist a{color:inherit;text-decoration:none}
+.alist h2{font-size:clamp(1.3rem,2.2vw,1.7rem);max-width:40ch}
+.alist a:hover h2{color:var(--signal)}
+.alist p{color:var(--muted);margin-top:10px;max-width:68ch}

@@ -1,0 +1,31 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import PageHead from '../../components/PageHead.astro';
+import Contact from '../../components/Contact.astro';
+import articles from '../../data/articles.js';
+const fmt = (d) => new Date(d + 'T12:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<Layout
+  title="Articles on Imaging Endpoints and MRI Physics | David Bennett, Ph.D."
+  description="Articles by David Bennett, Ph.D. on imaging biomarkers and endpoints in clinical trials, MR elastography and MRI physics."
+>
+  <Header current="articles" />
+  <main id="top">
+    <PageHead eyebrow="Articles" title="Notes on imaging endpoints and MRI physics" lede="Practical articles for sponsors, clinical teams and imaging scientists, drawn from twenty years of MRI research and clinical trial work." />
+    <section>
+      <div class="wrap">
+        <ul class="alist">
+          {articles.map((a) => (
+            <li class="reveal"><a href={`/articles/${a.slug}/`}>
+              <span class="mono">{fmt(a.date)} · {a.audience}</span>
+              <h2>{a.title}</h2>
+              <p>{a.description}</p>
+            </a></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+    <Contact />
+  </main>
+</Layout>
