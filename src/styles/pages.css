@@ -55,3 +55,4 @@
 .alist h2{font-size:clamp(1.3rem,2.2vw,1.7rem);max-width:40ch}
 .alist a:hover h2{color:var(--signal)}
 .alist p{color:var(--muted);margin-top:10px;max-width:68ch}
+.prose .note{margin-top:24px;font-size:.95rem}
