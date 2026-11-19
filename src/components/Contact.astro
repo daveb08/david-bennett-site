@@ -1,11 +1,12 @@
 ---
 // Cloudflare Turnstile site key (public; the secret key lives only in the Worker's settings).
 const SITEKEY = '0x4AAAAAAGGAHjUKdcE9hnZ5';
+const { topic = 'role', title = 'Hire me, book me, or just ask.', lede = 'Tell me what you need: an imaging endpoint, a physics course, or a talk.' } = Astro.props;
 ---
 <section class="contact" id="contact">
   <div class="wrap">
-    <h2 class="reveal">Hire me, book me, or just ask.</h2>
-    <p class="lede">Tell me what you need: an imaging endpoint, a physics course, or a talk.</p>
+    <h2 class="reveal">{title}</h2>
+    <p class="lede">{lede}</p>
     <form class="cform" id="cform" novalidate data-sitekey={SITEKEY}>
       <div class="row2">
         <label>Name<input name="name" autocomplete="name" required maxlength="120"></label>
@@ -13,10 +14,10 @@ const SITEKEY = '0x4AAAAAAGGAHjUKdcE9hnZ5';
       </div>
       <label>What is this about?
         <select name="topic" id="ctopic">
-          <option value="role">A role or consulting project</option>
-          <option value="teaching">A course or teaching</option>
-          <option value="talk">A talk or workshop</option>
-          <option value="other">Something else</option>
+          <option value="role" selected={topic === 'role'}>A role or consulting project</option>
+          <option value="teaching" selected={topic === 'teaching'}>A course or teaching</option>
+          <option value="talk" selected={topic === 'talk'}>A talk or workshop</option>
+          <option value="other" selected={topic === 'other'}>Something else</option>
         </select>
       </label>
       <label>Message<textarea name="message" rows="6" required maxlength="5000"></textarea></label>
@@ -33,7 +34,7 @@ const SITEKEY = '0x4AAAAAAGGAHjUKdcE9hnZ5';
       <button class="copyico" type="button" id="copymail" aria-label="Copy email address"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="c1" d="M9 9h10a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V10a1 1 0 0 1 1-1zm1 2v8h8v-8h-8zM5 3h10a1 1 0 0 1 1 1v2h-2V5H6v8h1v2H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path class="c2" d="M9.5 16.2 5.8 12.5l-1.4 1.4 5.1 5.1L20 8.5l-1.4-1.4z"/></svg><span id="copymsg" aria-live="polite">Copy email address</span></button>
     </div>
     <div class="cta">
-      <a class="pill ico" href="David-Bennett-CV.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 3h2v10.2l3.6-3.6L18 11l-6 6-6-6 1.4-1.4 3.6 3.6V3zM5 19h14v2H5v-2z"/></svg>Download CV</a>
+      <a class="pill ico" href="/David-Bennett-CV.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 3h2v10.2l3.6-3.6L18 11l-6 6-6-6 1.4-1.4 3.6 3.6V3zM5 19h14v2H5v-2z"/></svg>Download CV</a>
     </div>
     <div class="social">
       <a class="ico2" href="https://www.linkedin.com/in/david-bennett-phd-imaging-scientist" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>

@@ -1,0 +1,12 @@
+---
+// Heading block for inner pages. accent: 'signal' | 'teal' | 'violet'.
+const { eyebrow, title, lede, accent = 'signal' } = Astro.props;
+---
+<section class={`pagehead c-${accent}`} id="top-head">
+  <div class="wrap">
+    <p class="mono">{eyebrow}</p>
+    <h1>{title}</h1>
+    {lede && <p class="lede">{lede}</p>}
+    <slot />
+  </div>
+</section>

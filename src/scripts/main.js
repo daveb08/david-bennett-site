@@ -9,7 +9,9 @@ import './sketches.js';
 
 // three.js is the heaviest thing on the page. Load it on the visitor's first interaction,
 // or shortly after the page has finished loading, whichever comes first.
-let started = false;
+// Only the home page has the 3D scene.
+const hasScene = !!document.getElementById('bloch');
+let started = !hasScene;
 const events = ['pointermove', 'pointerdown', 'touchstart', 'keydown', 'scroll'];
 const loadScene = () => {
   if (started) return;
@@ -20,7 +22,9 @@ const loadScene = () => {
     if (stage) stage.style.display = 'none';
   });
 };
-events.forEach((e) => addEventListener(e, loadScene, { passive: true, once: true }));
-const later = () => setTimeout(loadScene, 2500);
-if (document.readyState === 'complete') later();
-else addEventListener('load', later, { once: true });
+if (hasScene) {
+  events.forEach((e) => addEventListener(e, loadScene, { passive: true, once: true }));
+  const later = () => setTimeout(loadScene, 2500);
+  if (document.readyState === 'complete') later();
+  else addEventListener('load', later, { once: true });
+}

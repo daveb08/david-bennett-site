@@ -2,7 +2,7 @@
 import '@fontsource-variable/manrope';
 import '../styles/global.css';
 
-const { title, description } = Astro.props;
+const { title, description, extraJsonLd = null } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const person = {
   '@context': 'https://schema.org',
@@ -12,6 +12,11 @@ const person = {
   jobTitle: 'MRI physicist and imaging scientist',
   url: 'https://davidbennettphd.com',
   sameAs: ['https://www.linkedin.com/in/david-bennett-phd-imaging-scientist', 'https://github.com/daveb08'],
+  alumniOf: [
+    { '@type': 'CollegeOrUniversity', name: 'Worcester Polytechnic Institute' },
+    { '@type': 'CollegeOrUniversity', name: 'University of Massachusetts Lowell' },
+  ],
+  knowsAbout: ['MRI physics', 'Imaging biomarkers', 'Imaging endpoints in clinical trials', 'MR elastography', 'Physics education', 'Educational simulation'],
 };
 ---
 <!doctype html>
@@ -33,6 +38,7 @@ const person = {
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script type="application/ld+json" set:html={JSON.stringify(person)} />
+    {extraJsonLd && <script type="application/ld+json" set:html={JSON.stringify(extraJsonLd)} />}
   </head>
   <body>
     <a href="#top" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-ink focus:px-4 focus:py-2 focus:text-bg">Skip to content</a>

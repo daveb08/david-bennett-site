@@ -1,32 +1,13 @@
+---
+import SimCards from './SimCards.astro';
+---
 <section class="light" id="simulators">
   <div class="wrap">
     <div class="sec-head reveal">
       <h2>I use simulation and AI to make physics click</h2>
-      <p class="lede">Students learn faster when they can change something and watch what happens. So I build free simulators that run in any browser, some with AI-powered explanations built in.</p>
+      <p class="lede">Students learn faster when they can change something and watch what happens. So I build free simulators that run in any browser, with AI coding tools doing the heavy typing.</p>
     </div>
-    <div class="sims">
-      <article class="sim reveal">
-        <canvas id="mini-mri" aria-hidden="true"></canvas>
-        <div class="body">
-          <p class="mono">mriphysicsbench.com</p>
-          <h3>MRI Physics Bench</h3>
-          <p>MRI physics you can play with, from a single spin to a finished image. Built for technologists, students and anyone facing the boards.</p>
-          <ul><li>Bloch simulator in 3D</li><li>K-space explorer</li><li>Signal processing</li><li>Coil fields and RF excitation</li><li>Coil tuning and matching</li><li>Contrast simulator</li><li>Head phantom</li></ul>
-          <p class="note">Early release, for learning only and not for clinical use.</p>
-          <a class="pill" href="https://mriphysicsbench.com/" target="_blank" rel="noopener">Open MRI Physics Bench</a>
-        </div>
-      </article>
-      <article class="sim reveal">
-        <canvas id="mini-phys" aria-hidden="true"></canvas>
-        <div class="body">
-          <p class="mono">physicslabbench.com</p>
-          <h3>Interactive Physics Lab</h3>
-          <p>Predict, test, explain. Small experiments that turn introductory physics into something students do, not something they memorize.</p>
-          <ul><li>Newton's laws</li><li>Circular motion</li><li>Drag and damped springs</li><li>Lab bench with uncertainty</li><li>Momentum, coming soon</li><li>Work and energy, coming soon</li><li>Electromagnetism, in development</li></ul>
-          <p class="note">No account and nothing to install.</p>
-          <a class="pill" href="https://physicslabbench.com/" target="_blank" rel="noopener">Open the Physics Lab</a>
-        </div>
-      </article>
-    </div>
+    <SimCards />
+    <p class="more"><a class="go" href="/simulators/">Why I built them, and how</a></p>
   </div>
 </section>

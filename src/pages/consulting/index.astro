@@ -1,0 +1,93 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import PageHead from '../../components/PageHead.astro';
+import Work from '../../components/Work.astro';
+import Publications from '../../components/Publications.astro';
+import Contact from '../../components/Contact.astro';
+
+const services = [
+  { title: 'Imaging biomarker and endpoint strategy', text: 'Deciding what an image should measure, how, and when, from Phase 1 through Phase 3. I have led MRI as a co-primary endpoint in a Phase 3 program.' },
+  { title: 'Regulatory documents', text: 'FDA briefing documents and the imaging rationale behind them, written so the physics, the biology and the trial logistics tell the same story.' },
+  { title: 'Central read charters and response criteria', text: 'Review charters and reader workflows, and response criteria such as RECIST 1.1, Lugano and PCWG2 put into practice across multi-center trials.' },
+  { title: 'Acquisition guidelines across sites and scanners', text: 'CT, MRI and PET/CT acquisition guidelines that keep data comparable when a trial runs on many scanners, from several vendors, in many countries.' },
+  { title: 'Imaging CRO oversight', text: 'A sponsor-side physicist who can read the vendor’s output critically, ask the right questions early, and keep timelines honest.' },
+  { title: 'Validation of AI readouts and new tracers', text: 'Experience validating an AI-assisted imaging algorithm for regulatory-grade readouts, and PET radiotracer collaborations in liver fibrosis and Crohn’s disease.' },
+];
+
+const areas = [
+  { title: 'Inflammatory bowel disease', text: 'Crohn’s disease, including perianal fistulizing disease, with MR enterography and MRI-based central reads.' },
+  { title: 'Liver disease', text: 'Primary sclerosing cholangitis and fibrosis, with MR elastography, gadoxetate-enhanced MRI and liver lipid spectroscopy.' },
+  { title: 'Oncology', text: 'Response assessment across dozens of global multi-center trials, on CT, MRI and PET/CT.' },
+  { title: 'Cardiac and preclinical', text: 'Cardiac MRI and MR spectroscopy at 7 T, and preclinical imaging on systems from 4.7 T to 9.4 T.' },
+];
+
+const service = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Imaging biomarker and endpoint strategy, David Bennett, Ph.D.',
+  url: 'https://davidbennettphd.com/consulting/',
+  areaServed: 'Worldwide',
+  provider: { '@type': 'Person', name: 'David Bennett', url: 'https://davidbennettphd.com' },
+  serviceType: ['Imaging biomarker strategy', 'Clinical trial imaging endpoints', 'Imaging CRO oversight', 'FDA briefing documents'],
+};
+---
+<Layout
+  title="Imaging Biomarker and Endpoint Strategy for Clinical Trials | David Bennett, Ph.D."
+  description="MRI physicist with 20+ years in imaging and clinical trials. Imaging biomarker and endpoint strategy, central read charters, acquisition guidelines and FDA briefing documents, Phase 1 to 3."
+  extraJsonLd={service}
+>
+  <Header current="consulting" />
+  <main id="top">
+    <PageHead
+      eyebrow="Consulting and full-time roles"
+      title="Imaging biomarker and endpoint strategy for clinical trials"
+      lede="I help drug developers decide what an image should measure, and then make sure every site measures it the same way. I started as an engineer and know the scanner from the coil up, so the science and the logistics agree."
+    >
+      <div class="cta">
+        <a class="pill" href="#contact" data-topic="role">Discuss a role or project</a>
+        <a class="pill line" href="/David-Bennett-CV.pdf" target="_blank" rel="noopener">Download CV</a>
+      </div>
+    </PageHead>
+
+    <section>
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <h2>Where I can help</h2>
+          <p class="lede">From the first question, "can imaging show this drug works?", to the reads that answer it.</p>
+        </div>
+        <div class="grid">
+          {services.map((s) => <div class="reveal"><h3>{s.title}</h3><p>{s.text}</p></div>)}
+        </div>
+      </div>
+    </section>
+
+    <Work heading="Work that moved trials forward" />
+
+    <section class="bg-surface">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <h2>Therapeutic areas</h2>
+          <p class="lede">Where most of my trial and research work has been. The physics carries over well to new indications.</p>
+        </div>
+        <div class="grid two">
+          {areas.map((a) => <div class="reveal"><h3>{a.title}</h3><p>{a.text}</p></div>)}
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap split">
+        <h2 class="reveal">How I work</h2>
+        <div class="text reveal">
+          <p><b>Full-time or consulting.</b> I am open to a full-time role on an imaging team, and to consulting projects, from a single protocol review to ongoing support across a program.</p>
+          <p><b>Candid, early.</b> If an endpoint is unlikely to work, I would rather say so before the first patient is scanned than after the last one. It is cheaper for everyone, and the scanner does not take it personally.</p>
+          <p><b>Confidential by default.</b> Sponsor and trial details stay with the sponsor. The examples on this page are ones already described in public or in my CV.</p>
+        </div>
+      </div>
+    </section>
+
+    <Publications />
+    <Contact title="Have an imaging question?" lede="Tell me about the program, the endpoint or the role. A short note is plenty to start." />
+  </main>
+</Layout>

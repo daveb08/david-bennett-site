@@ -1,0 +1,82 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import PageHead from '../../components/PageHead.astro';
+import Contact from '../../components/Contact.astro';
+
+const teaching = [
+  { when: '2026 to now', title: 'Adjunct, General Physics I', org: 'Merrimack College', text: 'Algebra-based introductory physics, taught with interactive simulations I built for the course.' },
+  { when: '2026', title: 'Guest lecture, MRI physics', org: 'Merrimack College, Kinesiology', text: 'How MRI makes an image and where T1 and T2 contrast come from, for senior exercise and health science majors, with an in-class activity on their own phones and laptops.' },
+  { when: '2025 to 2026', title: 'MRI board exam tutor', org: 'Independent', text: 'One-to-one tutoring for MRI technologists preparing for their registry exam.' },
+  { when: '2024 to 2025', title: 'Engineering and robotics teacher', org: 'Methuen High School', text: 'Five sections a term. Students built robots that solved an unseen maze on their own.' },
+  { when: '2013', title: 'Invited lecturer, MRI physics', org: 'Dartmouth College', text: 'Core MRI physics for an interdisciplinary graduate audience.' },
+  { when: '2012 to 2018', title: 'Adjunct Professor', org: 'University of Massachusetts Lowell', text: 'Created and taught an original online graduate course in MRI physics, and taught the graduate biomedical research ethics course.' },
+  { when: '2002 to 2007', title: 'Graduate teaching assistant', org: 'Worcester Polytechnic Institute', text: 'Taught in the biomedical engineering department throughout my Ph.D.' },
+  { when: '1994 to 1997', title: 'Peer tutor', org: 'UMass Lowell', text: 'Calculus and engineering physics, all the way through a B.S. in electrical engineering.' },
+];
+
+const talks = [
+  { title: 'MRI physics for people who do not do physics', text: 'From a single spinning proton to a finished image, with T1, T2 and k-space explained without the equations getting in the way.' },
+  { title: 'Imaging in drug development', text: 'How an image becomes a trial endpoint: choosing what to measure, keeping many scanners consistent, and what regulators look for.' },
+  { title: 'Teaching with simulation and AI', text: 'How I build classroom simulators with AI coding tools, what works, what does not, and how students actually use them.' },
+];
+---
+<Layout
+  title="Physics and MRI Teaching, Talks and Workshops | David Bennett, Ph.D."
+  description="College physics, graduate MRI physics, robotics and MRI board tutoring since 1994, now taught with interactive simulators. Talks and workshops on MRI, imaging in drug development and teaching with AI."
+>
+  <Header current="teaching" />
+  <main id="top">
+    <PageHead
+      accent="teal"
+      eyebrow="Teaching, talks and workshops"
+      title="Physics and MRI teaching that swaps memorizing for experimenting"
+      lede="I have been teaching since 1994: college physics, a graduate MRI course I designed from scratch, high school robotics and board exam tutoring. These days the lessons come with simulators I build myself."
+    >
+      <div class="cta">
+        <a class="pill" href="#contact" data-topic="teaching">Discuss a course</a>
+        <a class="pill line" href="#talks">Talks and workshops</a>
+      </div>
+    </PageHead>
+
+    <section>
+      <div class="wrap split">
+        <h2 class="reveal">How I teach</h2>
+        <div class="text reveal">
+          <p><b>Predict, test, explain.</b> Students make a prediction, try it in a simulation or on the bench, and then explain what happened. The equations come in once there is something to explain.</p>
+          <p><b>Make it hands on.</b> Physics sticks when students can change something and watch the result. They are also far more interested in a law of physics once they have been allowed to try to break it.</p>
+          <p><b>Build the tools.</b> When the tool I want does not exist, I build it, with AI coding tools doing the heavy typing. My <a href="/simulators/">simulators</a> started that way.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-surface">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <h2>Where I have taught</h2>
+          <p class="lede">From peer tutoring as an undergraduate to a graduate course of my own, alongside a full-time career in imaging.</p>
+        </div>
+        <ul class="list">
+          {teaching.map((t) => (
+            <li class="reveal"><span class="mono">{t.when}</span><div><h3>{t.title}</h3><span class="mono">{t.org}</span><p>{t.text}</p></div></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section id="talks">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <h2>Talks and workshops</h2>
+          <p class="lede">Shaped for your audience, from students and technologists to faculty and clinical teams. Guest lectures, seminars and hands-on workshops.</p>
+        </div>
+        <div class="grid">
+          {talks.map((t) => <div class="reveal c-violet"><h3>{t.title}</h3><p>{t.text}</p></div>)}
+        </div>
+        <p class="more"><a class="go" href="#contact" data-topic="talk">Book a talk</a></p>
+      </div>
+    </section>
+
+    <Contact topic="teaching" title="Need a physics teacher, or a speaker?" lede="Tell me about the course, the audience or the event." />
+  </main>
+</Layout>

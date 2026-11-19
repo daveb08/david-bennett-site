@@ -1,28 +1,25 @@
+---
+import work from '../data/work.js';
+const {
+  limit = work.length,
+  heading = 'Work that moved trials forward',
+  lede = 'Six projects, from the regulatory strategy behind a Phase 3 endpoint down to the hardware inside the scanner.',
+  more = null,
+} = Astro.props;
+---
 <section id="work">
   <div class="wrap">
     <div class="sec-head reveal">
-      <h2>Work that moved trials forward</h2>
-      <p class="lede">Six projects, from the regulatory strategy behind a Phase 3 endpoint down to the hardware inside the scanner.</p>
+      <h2>{heading}</h2>
+      <p class="lede">{lede}</p>
     </div>
     <ul class="rows">
-      <li class="reveal"><span class="mono">Takeda, 2020 to 2024</span>
-        <h3>MRI as a co-primary endpoint in Phase 3</h3>
-        <p>Led imaging strategy for a cell therapy program in perianal fistulizing Crohn's disease, where the MRI-based central read was a co-primary endpoint.</p></li>
-      <li class="reveal"><span class="mono">AstraZeneca, 2025</span>
-        <h3>An FDA briefing document for a rare liver disease</h3>
-        <p>Wrote the briefing document proposing MR elastography and gadoxetate-enhanced MRI as imaging endpoints for an early-stage primary sclerosing cholangitis study.</p></li>
-      <li class="reveal"><span class="mono">Parexel, 2014 to 2020</span>
-        <h3>Oncology imaging lead across dozens of global trials</h3>
-        <p>Put RECIST 1.1, Lugano and PCWG2 response criteria into practice across multi-center trials, and wrote the review charters and CT, MRI and PET/CT acquisition guidelines behind them.</p></li>
-      <li class="reveal"><span class="mono">Takeda, 2020 to 2024</span>
-        <h3>Validating AI readouts and new PET tracers</h3>
-        <p>Took part in validating an AI-assisted imaging algorithm for regulatory-grade IBD readouts, and co-led collaborations validating PET radiotracers in liver fibrosis and fibrostenotic Crohn's disease.</p></li>
-      <li class="reveal"><span class="mono">Aurora Imaging, 2008 to 2010</span>
-        <h3>Systems engineering for a dedicated breast MRI scanner</h3>
-        <p>RF and gradient hardware and software integration, performance verification, and breast PET-MRI detector integration with Brookhaven National Laboratory.</p></li>
-      <li class="reveal"><span class="mono">Pfizer, 2010 to 2012</span>
-        <h3>Preclinical cardiac MRI and spectroscopy at 7 T</h3>
-        <p>Designed and validated cardiac MRI and MR spectroscopy protocols, and proposed in vivo liver lipid spectroscopy as a first-in-human clinical endpoint.</p></li>
+      {work.slice(0, limit).map((w) => (
+        <li class="reveal"><span class="mono">{w.when}</span>
+          <h3>{w.title}</h3>
+          <p>{w.text}</p></li>
+      ))}
     </ul>
+    {more && <p class="more"><a class="go" href={more.href}>{more.label}</a></p>}
   </div>
 </section>

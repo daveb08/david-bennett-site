@@ -1,13 +1,19 @@
+---
+// current: which page is open ('consulting' | 'teaching' | 'simulators'), for aria-current.
+const { current = '' } = Astro.props;
+const links = [
+  { key: 'consulting', href: '/consulting/', label: 'Consulting' },
+  { key: 'teaching', href: '/teaching/', label: 'Teaching and talks' },
+  { key: 'simulators', href: '/simulators/', label: 'Simulators' },
+  { key: 'career', href: '/#career', label: 'Career' },
+];
+---
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#top">David Bennett, Ph.D.</a>
-    <nav aria-label="Sections" id="nav">
-      <a href="#about">What I offer</a>
-      <a href="#work">Work</a>
-      <a href="#simulators">Simulators</a>
-      <a href="#career">Career</a>
-      <a href="#publications">Publications</a>
-      <a class="pill line" href="David-Bennett-CV.pdf" target="_blank" rel="noopener">Download CV</a>
+    <a class="brand" href="/">David Bennett, Ph.D.</a>
+    <nav aria-label="Main" id="nav">
+      {links.map((l) => <a href={l.href} aria-current={l.key === current ? 'page' : undefined}>{l.label}</a>)}
+      <a class="pill line" href="/David-Bennett-CV.pdf" target="_blank" rel="noopener">Download CV</a>
       <a class="pill" href="#contact">Get in touch</a>
     </nav>
     <button class="burger" type="button" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><i></i><i></i></button>

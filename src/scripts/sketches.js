@@ -3,6 +3,7 @@ import { CALM, cssVar } from './util.js';
 
 (function(){
   var a=document.getElementById('mini-mri'), b=document.getElementById('mini-phys');
+  if(!a||!b)return;
   function fit(c){var d=Math.min(window.devicePixelRatio||1,2);c.width=c.clientWidth*d;c.height=c.clientHeight*d;return d;}
   function drawMri(t){
     var d=fit(a),g=a.getContext('2d'),w=a.width,h=a.height;g.clearRect(0,0,w,h);

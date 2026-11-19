@@ -7,11 +7,10 @@ import About from '../components/About.astro';
 import Work from '../components/Work.astro';
 import Simulators from '../components/Simulators.astro';
 import Career from '../components/Career.astro';
-import Publications from '../components/Publications.astro';
 import Contact from '../components/Contact.astro';
 ---
 <Layout
-  title="David Bennett, Ph.D."
+  title="David Bennett, Ph.D. | MRI Physicist, Imaging Endpoints and Physics Teaching"
   description="David Bennett, Ph.D. designs the imaging endpoints behind clinical trials and builds AI-assisted simulators that make physics click."
 >
   <Header />
@@ -19,10 +18,9 @@ import Contact from '../components/Contact.astro';
     <Hero />
     <Specs />
     <About />
-    <Work />
+    <Work limit={3} lede="A few highlights, from the regulatory strategy behind a Phase 3 endpoint to oncology reads across dozens of global trials." more={{ href: '/consulting/', label: 'All projects, services and publications' }} />
     <Simulators />
     <Career />
-    <Publications />
     <Contact />
   </main>
 </Layout>

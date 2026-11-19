@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import PageHead from '../../components/PageHead.astro';
+import SimCards from '../../components/SimCards.astro';
+import Contact from '../../components/Contact.astro';
+
+const apps = [
+  { '@type': 'WebApplication', name: 'MRI Physics Bench', url: 'https://mriphysicsbench.com/', applicationCategory: 'EducationalApplication', operatingSystem: 'Any (web browser)', isAccessibleForFree: true, author: { '@type': 'Person', name: 'David Bennett' } },
+  { '@type': 'WebApplication', name: 'Interactive Physics Lab', url: 'https://physicslabbench.com/', applicationCategory: 'EducationalApplication', operatingSystem: 'Any (web browser)', isAccessibleForFree: true, author: { '@type': 'Person', name: 'David Bennett' } },
+];
+const ld = { '@context': 'https://schema.org', '@graph': apps };
+---
+<Layout
+  title="Free MRI Physics and Intro Physics Simulators | David Bennett, Ph.D."
+  description="Free browser-based simulators: MRI Physics Bench (Bloch equations, k-space, coils, contrast) and the Interactive Physics Lab for introductory physics. No account, nothing to install."
+  extraJsonLd={ld}
+>
+  <Header current="simulators" />
+  <main id="top">
+    <PageHead
+      accent="violet"
+      eyebrow="Free and in your browser"
+      title="MRI and physics simulators you can actually play with"
+      lede="Two free simulator sites: one for MRI physics, from a single spin to a finished image, and one for introductory physics. No account, nothing to install."
+    />
+
+    <section class="light">
+      <div class="wrap">
+        <SimCards />
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap split">
+        <h2 class="reveal">Why I built them</h2>
+        <div class="text reveal">
+          <p>While tutoring MRI technologists for their board exams, I kept seeing the same gaps. Students could recite what T1 and T2 mean, but they had never watched magnetization relax, or seen what happens to an image when you change one setting. Textbook diagrams hold still. MRI does not.</p>
+          <p>The Physics Lab started the same way, for the General Physics I course I teach at Merrimack College. I wanted students to predict, test and explain, not just plug numbers into formulas.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-surface">
+      <div class="wrap split">
+        <h2 class="reveal">How they are built</h2>
+        <div class="text reveal">
+          <p><b>With AI coding tools.</b> I build both sites with Claude Code. I bring the physics and decide what each simulator should show; the AI does most of the typing, and I check its work.</p>
+          <p><b>Tested, not just eyeballed.</b> The physics lives in small, separate modules, each with its own automated tests, and every change runs hundreds of tests before it goes live.</p>
+          <p><b>Still early.</b> Both sites are early releases, made for learning and not for clinical use. If something looks wrong, I would genuinely like to hear about it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap split">
+        <h2 class="reveal">Using them in class</h2>
+        <div class="text reveal">
+          <p>Teachers and programs are welcome to use either site with students. They run on phones, tablets and laptops, so a QR code on a slide is enough to get a room started.</p>
+          <p>If you would like a simulator for a topic that is not there yet, or a version shaped for your course, get in touch.</p>
+        </div>
+      </div>
+    </section>
+
+    <Contact topic="teaching" title="Using the simulators, or want one built?" lede="Tell me what you teach and what you would like students to see." />
+  </main>
+</Layout>
